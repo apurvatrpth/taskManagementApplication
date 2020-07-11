@@ -10,4 +10,11 @@ export class AuthController {
   signUpUser(@Body(ValidationPipe) authUserDto: AuthUserDto): Promise<void> {
     return this.authService.signUp(authUserDto);
   }
+
+  @Post('/signin')
+  loginUser(
+    @Body() authUserDto: AuthUserDto,
+  ): Promise<{ accessToken: string }> {
+    return this.authService.signIn(authUserDto);
+  }
 }
